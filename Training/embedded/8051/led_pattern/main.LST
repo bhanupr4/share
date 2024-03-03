@@ -1,0 +1,55 @@
+C51 COMPILER V9.53.0.0   MAIN                                                              05/29/2015 12:23:31 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2           
+   3           void delay(unsigned int);
+   4           
+   5            void delay(unsigned int a)
+   6            {
+   7   1          int i;
+   8   1          for(i=0;i<20000;i++);
+   9   1        }
+*** WARNING C280 IN LINE 5 OF main.c: 'a': unreferenced local variable
+  10            
+  11            void main()
+  12            {
+  13   1          int i;
+  14   1          P1=0x80;
+  15   1          delay(45);
+  16   1          
+  17   1          while(1)
+  18   1          {
+  19   2            for(i=0;i<7;i++)
+  20   2            {
+  21   3              P1=P1>>1;
+  22   3              delay(45);
+  23   3              
+  24   3            }
+  25   2            if(P1==0x01)
+  26   2            {
+  27   3              P1=0x80;
+  28   3              delay(45);
+  29   3            }
+  30   2          }
+  31   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     62    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

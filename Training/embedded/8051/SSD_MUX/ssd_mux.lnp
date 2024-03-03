@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"main.obj" 
+TO "ssd_mux" 
+RAMSIZE(256) 

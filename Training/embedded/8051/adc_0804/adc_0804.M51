@@ -1,0 +1,118 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/03/2015  10:59:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE adc_0804.obj TO adc_0804 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  adc_0804.obj (ADC_0804)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  adc_0804 (ADC_0804)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     000FH     UNIT         ?PR?MAIN?ADC_0804
+            CODE    080FH     000FH     UNIT         ?PR?DELAY?ADC_0804
+            CODE    081EH     000CH     UNIT         ?C_C51STARTUP
+            CODE    082AH     0008H     UNIT         ?PR?READ?ADC_0804
+            CODE    0832H     0008H     UNIT         ?PR?WRITE?ADC_0804
+
+
+
+OVERLAY MAP OF MODULE:   adc_0804 (ADC_0804)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?ADC_0804
+
+?PR?MAIN?ADC_0804
+  +--> ?PR?WRITE?ADC_0804
+  +--> ?PR?READ?ADC_0804
+  +--> ?PR?DELAY?ADC_0804
+
+?PR?WRITE?ADC_0804
+  +--> ?PR?DELAY?ADC_0804
+
+?PR?READ?ADC_0804
+  +--> ?PR?DELAY?ADC_0804
+
+
+
+SYMBOL TABLE OF MODULE:  adc_0804 (ADC_0804)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/03/2015  10:59:19  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        ADC_0804
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:080FH         PUBLIC        delay
+  C:082AH         PUBLIC        read
+  C:0800H         PUBLIC        main
+  C:0832H         PUBLIC        write
+  B:00B0H.0       PUBLIC        RD1
+  B:00B0H.1       PUBLIC        WR1
+  B:00B0H.2       PUBLIC        INTR1
+  -------         PROC          MAIN
+  C:0800H         LINE#         16
+  C:0800H         LINE#         17
+  C:0800H         LINE#         18
+  C:0803H         LINE#         22
+  C:0806H         LINE#         23
+  C:0809H         LINE#         24
+  C:080CH         LINE#         25
+  -------         ENDPROC       MAIN
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:080FH         LINE#         29
+  C:080FH         LINE#         30
+  C:080FH         LINE#         32
+  C:081DH         LINE#         33
+  -------         ENDPROC       DELAY
+  -------         PROC          READ
+  C:082AH         LINE#         36
+  C:082AH         LINE#         37
+  C:082AH         LINE#         38
+  C:082CH         LINE#         39
+  C:082FH         LINE#         40
+  C:0831H         LINE#         41
+  -------         ENDPROC       READ
+  -------         PROC          WRITE
+  C:0832H         LINE#         43
+  C:0832H         LINE#         44
+  C:0832H         LINE#         45
+  C:0834H         LINE#         46
+  C:0837H         LINE#         47
+  C:0839H         LINE#         48
+  -------         ENDPROC       WRITE
+  -------         ENDMOD        ADC_0804
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002EH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=61
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

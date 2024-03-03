@@ -1,0 +1,117 @@
+C51 COMPILER V9.53.0.0   LCD                                                               06/29/2015 10:39:10 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN lcd.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit rs=P3^0;
+   4          sbit en=P3^1;
+   5          
+   6          void cmd(unsigned char);   // command function
+   7          void dat(unsigned char);   // data function
+   8          void delay();              //  delay function
+   9          void printi(unsigned int);  // function for passing numbers
+  10          void print(unsigned char *); //  function for passing string
+  11          void inti();
+  12          
+  13          void delay()
+  14            {
+  15   1        unsigned int i;
+  16   1        for(i=0;i<20000;i++);
+  17   1        }
+  18          
+  19          void inti()
+  20            {
+  21   1         cmd(0x01);   // clear screen
+  22   1         cmd(0x38);   // 8-bit mode
+  23   1      //   cmd(0x28);   // 4-bit mode
+  24   1         cmd(0x06);
+  25   1         cmd(0x0e);
+  26   1        }
+  27          
+  28          void cmd(unsigned char cd)
+  29            {
+  30   1        P2=cd;
+  31   1        rs=0;
+  32   1        en=0;
+  33   1        delay();
+  34   1        en=1;
+  35   1        }
+  36          
+  37          void dat(unsigned char da)
+  38            {
+  39   1        P2=da;
+  40   1        rs=1;
+  41   1        en=0;
+  42   1        delay();
+  43   1        en=1;
+  44   1        }
+  45          
+  46          void printi(unsigned int a)
+  47            {
+  48   1         unsigned int b=a,d=1;
+  49   1          while(a>9)
+  50   1            {
+  51   2           a=a/10;
+  52   2           d=d*10;
+  53   2          }
+  54   1      
+  55   1          while(b>0)
+C51 COMPILER V9.53.0.0   LCD                                                               06/29/2015 10:39:10 PAGE 2   
+
+  56   1            {
+  57   2          dat(((b/d)+48));
+  58   2          b=b%d;
+  59   2          d=d/10;
+  60   2          }
+  61   1         }
+  62          
+  63          void print(unsigned char *a)
+  64            {
+  65   1      //  int count=0;
+  66   1      
+  67   1         while(*a!='\0')
+  68   1          {
+  69   2          dat((*a));
+  70   2          a++;
+  71   2          }
+  72   1        }
+  73          
+  74          void main()
+  75            { 
+  76   1        int i;
+  77   1        
+  78   1        P2=0X00;
+  79   1        inti();
+  80   1        while(1)
+  81   1          {
+  82   2          cmd(0x80);  // 8 indicates 0th row and 0 indicates 0th column  
+  83   2      //    dat('I'); 
+  84   2             
+  85   2            print("INDIA");
+  86   2          cmd(0xc0);
+  87   2          printi(1234);     
+  88   2          while(1);
+  89   2          }
+  90   1        }
+*** WARNING C280 IN LINE 76 OF lcd.c: 'i': unreferenced local variable
+  91             
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    231    ----
+   CONSTANT SIZE    =      6    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

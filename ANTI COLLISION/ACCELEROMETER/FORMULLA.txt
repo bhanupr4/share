@@ -1,0 +1,22 @@
+
+#define ADXL345_X_GAIN 333 // GAIN factors
+#define ADXL345_Y_GAIN 326
+#define ADXL345_Z_GAIN 268
+
+
+// apply the slope and offset factors
+accX = ( accX - (-129) ) / ADXL345_X_GAIN;
+
+
+
+
+accY = ( accY - (-79) ) / ADXL345_Y_GAIN; 
+accZ = ( accZ - 684 ) / ADXL345_Z_GAIN;
+
+
+
+
+pitch = (atan2(accX,sqrt(accY*accY+accZ*accZ)) * 180.0) / PI;
+roll = (atan2(accY,(sqrt(accX*accX+accZ*accZ))) * 180.0) / PI;
+
+
