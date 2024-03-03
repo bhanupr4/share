@@ -1,0 +1,15 @@
+data report time
+5min data
+27-05-2019 14:53 to 27-05-2019 18:38 19-meters
+
+1min data 
+27-05-2019 18:39 to 27-05-2019 18:55 12 METERS
+
+1MIN DATA
+27-05-2019 18:58 to 27-05-2019 19:08 12 meters
+
+1min data
+27-05-2019 19:13 to 27-05-2019 19:27 14meters
+
+1min data
+27-05-2019 19:32 to ... 14 meters

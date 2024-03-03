@@ -1,0 +1,14 @@
+Added NTP time reqest to sync time of device.
+Added auto set APN for(airtel, !dea, vodafone, aircel, bsnl, reliance, uninor, docomo)
+Added Fast modbus read
+Ram optimized
+Faster Communication
+Easy to debug by led status
+Store Modbus para in NVROM
+Intelligent algoritham to read and upload data with sync technology
+Auto healing and debug feature
+Auto time syncing from internet feature
+
+Limitations
+Due to sw reset 
+Need hardware to be improved
