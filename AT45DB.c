@@ -8,7 +8,8 @@
 //SPI connection declaration
 #define _err      0xFF
 #define _SPI      //Put Spi *p
-#define _csPin    //Put IDX pin of CS (pio.h)//put own CS pin macros
+#define _csPin    PIO_PA15_IDX//PA15 Put IDX pin of CS (pio.h)//put own CS pin macros
+#define _WpPin    PIO_PD27_IDX//PD27 IDX
 #define dummy_CS  //uint8_t p_cs
 #define _pageAddrShift  1
 
