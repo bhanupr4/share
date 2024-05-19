@@ -1,13 +1,6 @@
 #ifndef AT45DB_H
 #define AT45DB_H
 
-#define DF_AT45DB081D   1
-#define DF_AT45DB161D   2
-#define DF_AT45DB041D   3
-#define DF_AT45DB321D   4
-
-#elif DF_VARIANT == DF_AT45DB041D
-// configuration for the Atmel AT45DB041D device
 #define DF_PAGE_ADDR_BITS       13
 #define DF_PAGE_SIZE            512
 #define DF_PAGE_BITS            9
