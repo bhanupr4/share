@@ -109,3 +109,35 @@ void readPageToBuf1(uint16_t pageAddr)
   dis_tx();
   AT45DB_wait();
 }
+
+// Reads one byte from one of the Dataflash internal SRAM buffer 1
+uint8_t readByteBuf1(uint16_t addr)
+{
+  unsigned char data = 0;
+
+  en_tx();
+  tx(Buf1Read);
+  tx(0x00);               //don't care
+  tx((uint8_t) (addr >> 8));
+  tx((uint8_t) (addr));
+  tx(0x00);               //don't care
+  data = tx(0x00);        //read byte
+  dis_tx();
+
+  return data;
+}
+
+// Reads a number of bytes from one of the Dataflash internal SRAM buffer 1
+void readBytesBuf1(uint16_t addr, uint8_t *data, size_t size)
+{
+  en_tx();
+  tx(Buf1Read);
+  tx(0x00);               //don't care
+  tx((uint8_t) (addr >> 8));
+  tx((uint8_t) (addr));
+  tx(0x00);               //don't care
+  for (size_t i = 0; i < size; i++) {
+    *data++ = tx(0x00);
+  }
+  dis_tx();
+}
