@@ -99,7 +99,7 @@ void setPageAddr(uint16_t pageAddr)
   tx(getPageAddrB1(pageAddr));
   tx(0);
 }
-
+////////////// READ /////////////////
 // Transfers a page from flash to Dataflash SRAM buffer
 void readPageToBuf1(uint16_t pageAddr)
 {
@@ -141,3 +141,41 @@ void readBytesBuf1(uint16_t addr, uint8_t *data, size_t size)
   }
   dis_tx();
 }
+////////////// WRITE /////////////////
+// Writes one byte to one to the Dataflash internal SRAM buffer 1
+void writeByteBuf1(uint16_t addr, uint8_t data)
+{
+  en_tx();
+  tx(Buf1Write);
+  tx(0x00);               //don't care
+  tx((uint8_t) (addr >> 8));
+  tx((uint8_t) (addr));
+  tx(data);               //write data byte
+  dis_tx();
+}
+
+// Writes a number of bytes to one of the Dataflash internal SRAM buffer 1
+void writeStrBuf1(uint16_t addr, uint8_t *data, size_t size)
+{
+  en_tx();
+  tx(Buf1Write);
+  tx(0x00);               //don't care
+  tx((uint8_t) (addr >> 8));
+  tx((uint8_t) (addr));
+  for (size_t i = 0; i < size; i++) {
+    tx(*data++);
+  }
+  dis_tx();
+}
+
+// Transfers Dataflash SRAM buffer 1 to flash page
+void writeBuf1ToPage(uint16_t pageAddr)
+{
+  en_tx();
+  tx(Buf1ToFlashWE);
+  setPageAddr(pageAddr);
+  dis_tx();
+  AT45DB_wait();
+}
+
+////////////// ERASE /////////////////
