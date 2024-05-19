@@ -199,15 +199,18 @@ void writeBuf1ToPage(uint16_t pageAddr)
 ////////////// ERASE /////////////////
 void page_Erase(uint16_t pageAddr)
 {
+  gpio_set_pin_high(_WpPin);
   en_tx();
   tx(PageErase);
   setPageAddr(pageAddr);
   dis_tx();
   AT45DB_wait();
+  gpio_set_pin_low(_WpPin);
 }
 
 void chip_Erase()
 {
+  gpio_set_pin_high(_WpPin);
   en_tx();
   tx(0xC7);
   tx(0x94);
@@ -215,4 +218,5 @@ void chip_Erase()
   tx(0x9A);
   dis_tx();
   AT45DB_wait();
+  gpio_set_pin_low(_WpPin);
 }
