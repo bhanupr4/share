@@ -56,7 +56,7 @@ uint8_t tx(uint8_t data) {
   if(spi_transceive_packet(_SPI ,&data, ,&rx_data, 1) == STATUS_OK) {
      return rx_data;
   }
-  rerturn _err;//Put SPI function to transfer byte
+  return _err;//Put SPI function to transfer byte
 }
 
 uint8_t AT45DB_status(void) {
