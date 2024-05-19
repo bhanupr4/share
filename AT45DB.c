@@ -50,8 +50,8 @@ uint8_t tx(uint8_t data) {
 uint8_t AT45DB_status(void) {
   uint8_t res;
   en_tx();
-  res = transmit(StatusReg);
-  res = transmit(0x00);
+  res = tx(StatusReg);
+  res = tx(0x00);
   dis_tx();
 
   return res;
@@ -60,3 +60,13 @@ uint8_t AT45DB_status(void) {
 void AT45DB_wait(void) {
   while (!(AT45DB_status() & 0x80));
 }
+
+void AT45DB_id(uint8_t *id) {
+  en_tx();
+  tx(ReadMfgID);
+  for(uint8_t i = 0; i < 4; i++) {
+    id[i] = tx(0);
+  }
+  dis_tx();
+}
+
