@@ -49,7 +49,7 @@ void dis_tx(void) {
   //put SPI stop tx api --> end SPI tx
 }
 
-uint8_t tx(uint8_t data) {
+spi_status_t tx(uint8_t data) {
   rerturn ;//Put SPI function to transfer byte
 }
 
