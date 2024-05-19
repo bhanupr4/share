@@ -25,6 +25,6 @@ void writeByteBuf1(uint16_t addr, uint8_t data);
 void writeStrBuf1(uint16_t addr, uint8_t *data, size_t size);
 void writeBuf1ToPage(uint16_t pageAddr);
 void page_Erase(uint16_t pageAddr);
-void chip_Erase();
+void chip_Erase(void);
 
 #endif // AT45DB_H
