@@ -33,6 +33,16 @@ void AT45DB_init(void)
   //_pageAddrShift = 1
 }
 
+void en_tx(void) {
+  //put SPI start tx api --> set SPI registers for tx
+  //Put gpio api to make CS->LOW
+}
+
+void dis_tx(void) {
+  //Put gpio api to make CS->HIGH
+  //put SPI stop tx api --> end SPI tx
+}
+
 uint8_t tx(uint8_t data) {
   rerturn ;//Put SPI function to transfer byte
 }
