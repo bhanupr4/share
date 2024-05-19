@@ -70,3 +70,15 @@ void AT45DB_id(uint8_t *id) {
   dis_tx();
 }
 
+void getSecurity(uint8_t *data, size_t size)
+{
+    en_tx();
+    tx(ReadSecReg);
+    tx(0x00);
+    tx(0x00);
+    tx(0x00);
+    for (size_t i = 0; i < size; i++) {
+      *data++ = transmit(0x00);
+    }
+    dis_tx();
+}
