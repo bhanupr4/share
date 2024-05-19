@@ -54,7 +54,7 @@ void dis_tx(void) {
 uint8_t tx(uint8_t data) {
   uint8_t rx_data;
   //write into SPI
-  if(spi_transceive_packet(_SPI ,&data, ,&rx_data, 1) == STATUS_OK) {
+  if(spi_transceive_packet(_SPI, &data, &rx_data, 1) == STATUS_OK) {
      return rx_data;
   }
   return _err;//Put SPI function to transfer byte
