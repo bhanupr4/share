@@ -4,6 +4,7 @@
 #include "spi_master.h"
 #include "sysclk.h"
 #include "gpio.h"
+#include "AT45DB.h"
 
 //SPI connection declaration
 #define _err      0xFF
