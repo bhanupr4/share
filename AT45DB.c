@@ -83,6 +83,23 @@ void getSecurity(uint8_t *data, size_t size)
     dis_tx();
 }
 
+uint8_t getPageAddrB0(uint16_t pageAddr)
+{
+  return (pageAddr << (DF_PAGE_BITS - 8)) >> 8;
+}
+
+uint8_t getPageAddrB1(uint16_t page)
+{
+  return page << (DF_PAGE_BITS - 8);
+}
+
+void setPageAddr(uint16_t pageAddr)
+{
+  tx(getPageAddrB0(pageAddr));
+  tx(getPageAddrB1(pageAddr));
+  tx(0);
+}
+
 // Transfers a page from flash to Dataflash SRAM buffer
 void readPageToBuf1(uint16_t pageAddr)
 {
