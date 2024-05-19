@@ -1,12 +1,9 @@
 //include necessary ASF headers
 #include <asf.h>
 #include "conf_board.h"
+#include "spi_master.h"
 #include "sysclk.h"
-#include "spi.h"
-#include "sysclk.h"
-#include "sleep.h"
-#include "pio.h"
-#include "pio_handler.h"
+#include "gpio.h"
 
 //SPI connection declaration
 #define _err      0xFF
@@ -35,9 +32,9 @@
 void AT45DB_init(void)
 {
   //Call standard SPI initialization
-  spi_master_init();//put spiinit function() here
+  spi_master_init(_SPI);//put spiinit function() here
   
-  void pio_set_output(Pio *p_pio, 1,1,0,1); //Configire CS pin as OUTPUT
+  gpio_configure_pin(_csPin, PIO_TYPE_PIO_OUTPUT_1); //Configire CS pin as OUTPUT
   
   //_pageAddrShift = 1
 }
