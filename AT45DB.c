@@ -179,3 +179,22 @@ void writeBuf1ToPage(uint16_t pageAddr)
 }
 
 ////////////// ERASE /////////////////
+void page_Erase(uint16_t pageAddr)
+{
+  en_tx();
+  tx(PageErase);
+  setPageAddr(pageAddr);
+  dis_tx();
+  AT45DB_wait();
+}
+
+void chip_Erase()
+{
+  en_tx();
+  tx(0xC7);
+  tx(0x94);
+  tx(0x80);
+  tx(0x9A);
+  dis_tx();
+  AT45DB_wait();
+}
