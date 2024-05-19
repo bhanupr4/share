@@ -57,4 +57,6 @@ uint8_t AT45DB_status(void) {
   return res;
 }
 
-
+void AT45DB_wait(void) {
+  while (!(AT45DB_status() & 0x80));
+}
