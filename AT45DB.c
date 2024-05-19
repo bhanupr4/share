@@ -1,6 +1,6 @@
 //include necessary ASF headers
 #include <AT45DB.h>
-
+#include "spi.h"
 //SPI connection declaration
 #define _csPin    //put own CS pin macros
 #define _pageAddrShift  1
