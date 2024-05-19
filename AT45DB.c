@@ -82,3 +82,13 @@ void getSecurity(uint8_t *data, size_t size)
     }
     dis_tx();
 }
+
+// Transfers a page from flash to Dataflash SRAM buffer
+void readPageToBuf1(uint16_t pageAddr)
+{
+  en_tx();
+  tx(FlashToBuf1Transfer);
+  setPageAddr(pageAddr);
+  dis_tx();
+  AT45DB_wait();
+}
