@@ -1,6 +1,9 @@
 //include necessary ASF headers
 #include <AT45DB.h>
 
+//SPI connection declaration
+//#define _csPin    //put own CS pin macros
+
 //Dataflash commands
 #define FlashPageRead           0xD2    // Main memory page read
 #define StatusReg               0xD7    // Status register
@@ -17,3 +20,13 @@
 #define Buf2Read                0xD6    // Buffer 2 read
 #define Buf2ToFlashWE           0x86    // Buffer 2 to main memory page program with built-in erase
 #define Buf2Write               0x87    // Buffer 2 write
+
+void AT45DB_init(void)
+{
+  //Call standard SPI initialization
+  //put spiinit function() here
+
+  //Configire CS pin as OUTPUT
+  //Put standard gpio function to set CS pin as OUTPUT
+  
+}
