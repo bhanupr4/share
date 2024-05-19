@@ -49,6 +49,12 @@ uint8_t tx(uint8_t data) {
 
 uint8_t AT45DB_status(void) {
   uint8_t res;
-
   en_tx();
+  res = transmit(StatusReg);
+  res = transmit(0x00);
+  dis_tx();
+
+  return res;
 }
+
+
