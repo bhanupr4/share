@@ -32,11 +32,10 @@
 void AT45DB_init(void)
 {
   //Call standard SPI initialization
-  //put spiinit function() here
-
-  //Configire CS pin as OUTPUT
-  //Put standard gpio function to set CS pin as OUTPUT
-
+  spi_master_init();//put spiinit function() here
+  
+  void pio_set_output(Pio *p_pio, 1,1,0,1); //Configire CS pin as OUTPUT
+  
   //_pageAddrShift = 1
 }
 
