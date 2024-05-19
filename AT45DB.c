@@ -209,7 +209,7 @@ void page_Erase(uint16_t pageAddr)
   gpio_set_pin_low(_WpPin);
 }
 
-void chip_Erase()
+void chip_Erase(void)
 {
   gpio_set_pin_high(_WpPin);
   en_tx();
