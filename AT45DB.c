@@ -130,7 +130,7 @@ uint8_t readByteBuf1(uint16_t addr)
   en_tx();
   tx(Buf1Read);
   tx(0x00);               //don't care
-  tx((uint8_t) (addr >> 8));
+  tx((uint8_t) (addr >> 8));          //SENDING msb of address 
   tx((uint8_t) (addr));
   tx(0x00);               //don't care
   data = tx(0x00);        //read byte
