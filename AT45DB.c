@@ -2,7 +2,8 @@
 #include <AT45DB.h>
 
 //SPI connection declaration
-//#define _csPin    //put own CS pin macros
+#define _csPin    //put own CS pin macros
+#define _pageAddrShift  1
 
 //Dataflash commands
 #define FlashPageRead           0xD2    // Main memory page read
@@ -28,5 +29,6 @@ void AT45DB_init(void)
 
   //Configire CS pin as OUTPUT
   //Put standard gpio function to set CS pin as OUTPUT
-  
+
+  //_pageAddrShift = 1
 }
