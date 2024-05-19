@@ -9,7 +9,10 @@
 #include "pio_handler.h"
 
 //SPI connection declaration
+#define _err      0xFF
+#define _SPI      //Put Spi *p
 #define _csPin    //put own CS pin macros
+#define dummy_CS  //uint8_t p_cs
 #define _pageAddrShift  1
 
 //Dataflash commands
@@ -50,7 +53,13 @@ void dis_tx(void) {
 }
 
 uint8_t tx(uint8_t data) {
-  rerturn ;//Put SPI function to transfer byte
+  //write into SPI
+  if(spi_write(_SPI , data, dummy_CS) == SPI_OK) {
+   if(spi_read(_SPI, &data, &dummy_CS) == SPI_OK) {
+      return data;
+    }
+  }
+  rerturn _err;//Put SPI function to transfer byte
 }
 
 uint8_t AT45DB_status(void) {
