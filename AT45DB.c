@@ -44,11 +44,11 @@ void AT45DB_init(void)
 
 void en_tx(void) {
   //put SPI start tx api --> set SPI registers for tx
-  //Put gpio api to make CS->LOW
+  gpio_set_pin_low(_csPin); //Put gpio api to make CS->LOW
 }
 
 void dis_tx(void) {
-  //Put gpio api to make CS->HIGH
+  gpio_set_pin_high(_csPin);//Put gpio api to make CS->HIGH
   //put SPI stop tx api --> end SPI tx
 }
 
