@@ -1,6 +1,13 @@
 //include necessary ASF headers
-#include <AT45DB.h>
+#include <asf.h>
+#include "conf_board.h"
+#include "sysclk.h"
 #include "spi.h"
+#include "sysclk.h"
+#include "sleep.h"
+#include "pio.h"
+#include "pio_handler.h"
+
 //SPI connection declaration
 #define _csPin    //put own CS pin macros
 #define _pageAddrShift  1
