@@ -35,6 +35,7 @@ void AT45DB_init(void)
   spi_master_init(_SPI);//put spiinit function() here
   
   gpio_configure_pin(_csPin, PIO_TYPE_PIO_OUTPUT_1); //Configire CS pin as OUTPUT
+  gpio_configure_pin(_WpPin, PIO_TYPE_PIO_OUTPUT_0); //Configire CS pin as OUTPUT
   
   //_pageAddrShift = 1
 }
@@ -156,6 +157,7 @@ void readBytesBuf1(uint16_t addr, uint8_t *data, size_t size)
 // Writes one byte to one to the Dataflash internal SRAM buffer 1
 void writeByteBuf1(uint16_t addr, uint8_t data)
 {
+  gpio_set_pin_high(_WpPin);
   en_tx();
   tx(Buf1Write);
   tx(0x00);               //don't care
@@ -163,11 +165,13 @@ void writeByteBuf1(uint16_t addr, uint8_t data)
   tx((uint8_t) (addr));
   tx(data);               //write data byte
   dis_tx();
+  gpio_set_pin_low(_WpPin);
 }
 
 // Writes a number of bytes to one of the Dataflash internal SRAM buffer 1
 void writeStrBuf1(uint16_t addr, uint8_t *data, size_t size)
 {
+  gpio_set_pin_high(_WpPin);
   en_tx();
   tx(Buf1Write);
   tx(0x00);               //don't care
@@ -177,16 +181,19 @@ void writeStrBuf1(uint16_t addr, uint8_t *data, size_t size)
     tx(*data++);
   }
   dis_tx();
+  gpio_set_pin_low(_WpPin);
 }
 
 // Transfers Dataflash SRAM buffer 1 to flash page
 void writeBuf1ToPage(uint16_t pageAddr)
 {
+  gpio_set_pin_high(_WpPin);
   en_tx();
   tx(Buf1ToFlashWE);
   setPageAddr(pageAddr);
   dis_tx();
   AT45DB_wait();
+  gpio_set_pin_low(_WpPin);
 }
 
 ////////////// ERASE /////////////////
