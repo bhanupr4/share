@@ -32,3 +32,13 @@ void AT45DB_init(void)
 
   //_pageAddrShift = 1
 }
+
+uint8_t tx(uint8_t data) {
+  rerturn ;//Put SPI function to transfer byte
+}
+
+uint8_t AT45DB_status(void) {
+  uint8_t res;
+
+  en_tx();
+}
